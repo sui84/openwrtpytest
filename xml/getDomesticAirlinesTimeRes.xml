@@ -1,0 +1,79 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <getDomesticAirlinesTimeResponse xmlns="http://WebXml.com.cn/">
+         <getDomesticAirlinesTimeResult>
+            <xs:schema id="Airlines" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+               <xs:element name="Airlines" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+                  <xs:complexType>
+                     <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="AirlinesTime">
+                           <xs:complexType>
+                              <xs:sequence>
+                                 <xs:element name="Company" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="AirlineCode" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="StartDrome" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="ArriveDrome" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="StartTime" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="ArriveTime" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="Mode" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="AirlineStop" type="xs:string" minOccurs="0"/>
+                                 <xs:element name="Week" type="xs:string" minOccurs="0"/>
+                              </xs:sequence>
+                           </xs:complexType>
+                        </xs:element>
+                     </xs:choice>
+                  </xs:complexType>
+               </xs:element>
+            </xs:schema>
+            <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+               <Airlines xmlns="">
+                  <AirlinesTime diffgr:id="AirlinesTime1" msdata:rowOrder="0">
+                     <Company>山东航空</Company>
+                     <AirlineCode>SC4913</AirlineCode>
+                     <StartDrome>厦门高崎国际机场</StartDrome>
+                     <ArriveDrome>珠海金湾机场</ArriveDrome>
+                     <StartTime>07:05</StartTime>
+                     <ArriveTime>08:10</ArriveTime>
+                     <Mode>738</Mode>
+                     <AirlineStop>0</AirlineStop>
+                     <Week>123456日</Week>
+                  </AirlinesTime>
+                  <AirlinesTime diffgr:id="AirlinesTime2" msdata:rowOrder="1">
+                     <Company>中国国航</Company>
+                     <AirlineCode>CA4913</AirlineCode>
+                     <StartDrome>厦门高崎国际机场</StartDrome>
+                     <ArriveDrome>珠海金湾机场</ArriveDrome>
+                     <StartTime>07:05</StartTime>
+                     <ArriveTime>08:10</ArriveTime>
+                     <Mode>738</Mode>
+                     <AirlineStop>0</AirlineStop>
+                     <Week>123456日</Week>
+                  </AirlinesTime>
+                  <AirlinesTime diffgr:id="AirlinesTime3" msdata:rowOrder="2">
+                     <Company>南方航空</Company>
+                     <AirlineCode>CZ5221</AirlineCode>
+                     <StartDrome>厦门高崎国际机场</StartDrome>
+                     <ArriveDrome>珠海金湾机场</ArriveDrome>
+                     <StartTime>11:55</StartTime>
+                     <ArriveTime>13:10</ArriveTime>
+                     <Mode>737</Mode>
+                     <AirlineStop>0</AirlineStop>
+                     <Week>12356日</Week>
+                  </AirlinesTime>
+                  <AirlinesTime diffgr:id="AirlinesTime4" msdata:rowOrder="3">
+                     <Company>厦门航空</Company>
+                     <AirlineCode>MF8313</AirlineCode>
+                     <StartDrome>厦门高崎国际机场</StartDrome>
+                     <ArriveDrome>珠海金湾机场</ArriveDrome>
+                     <StartTime>11:55</StartTime>
+                     <ArriveTime>13:10</ArriveTime>
+                     <Mode>737</Mode>
+                     <AirlineStop>0</AirlineStop>
+                     <Week>12356日</Week>
+                  </AirlinesTime>
+               </Airlines>
+            </diffgr:diffgram>
+         </getDomesticAirlinesTimeResult>
+      </getDomesticAirlinesTimeResponse>
+   </soap:Body>
+</soap:Envelope>

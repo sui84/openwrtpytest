@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webxml.com.cn/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:toSimplifiedChinese>
+         <!--Optional:-->
+         <web:sText>%s</web:sText>
+      </web:toSimplifiedChinese>
+   </soapenv:Body>
+</soapenv:Envelope>

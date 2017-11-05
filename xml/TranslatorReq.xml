@@ -1,0 +1,9 @@
+﻿<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://WebXml.com.cn/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:Translator>
+         <!--Optional:-->
+         <web:wordKey>%s</web:wordKey>
+      </web:Translator>
+   </soapenv:Body>
+</soapenv:Envelope>

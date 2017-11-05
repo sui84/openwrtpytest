@@ -1,0 +1,15 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://WebXml.com.cn/">
+   <soap:Header/>
+   <soap:Body>
+      <web:getDomesticAirlinesTime>
+         <!--Optional:-->
+         <web:startCity>%s</web:startCity>
+         <!--Optional:-->
+         <web:lastCity>%s</web:lastCity>
+         <!--Optional:-->
+         <web:theDate/>
+         <!--Optional:-->
+         <web:userID/>
+      </web:getDomesticAirlinesTime>
+   </soap:Body>
+</soap:Envelope>

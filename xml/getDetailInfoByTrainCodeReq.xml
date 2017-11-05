@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://WebXml.com.cn/">
+   <soap:Header/>
+   <soap:Body>
+      <web:getDetailInfoByTrainCode>
+         <!--Optional:-->
+         <web:TrainCode>%s</web:TrainCode>
+         <!--Optional:-->
+         <web:UserID></web:UserID>
+      </web:getDetailInfoByTrainCode>
+   </soap:Body>
+</soap:Envelope>

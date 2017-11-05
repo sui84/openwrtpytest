@@ -1,0 +1,13 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://WebXml.com.cn/">
+   <soap:Header/>
+   <soap:Body>
+      <web:getStationAndTimeByStationName>
+         <!--Optional:-->
+         <web:StartStation>%s</web:StartStation>
+         <!--Optional:-->
+         <web:ArriveStation>%s</web:ArriveStation>
+         <!--Optional:-->
+         <web:UserID></web:UserID>
+      </web:getStationAndTimeByStationName>
+   </soap:Body>
+</soap:Envelope>

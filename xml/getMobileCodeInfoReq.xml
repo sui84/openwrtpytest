@@ -1,0 +1,11 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:web="http://WebXml.com.cn/">
+   <soap:Header/>
+   <soap:Body>
+      <web:getMobileCodeInfo>
+         <!--Optional:-->
+         <web:mobileCode>%s</web:mobileCode>
+         <!--Optional:-->
+         <web:userID></web:userID>
+      </web:getMobileCodeInfo>
+   </soap:Body>
+</soap:Envelope>
