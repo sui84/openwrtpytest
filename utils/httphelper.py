@@ -93,7 +93,7 @@ class HttpHelper(object):
         if response.status_code==200:
             data = response.text
         else:
-            data = "%d %s" %  response.status_code,response.reason
+            data = "%d %s" %  (response.status_code,response.reason)
         pprint.pprint(data)
         return data
 

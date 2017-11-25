@@ -31,3 +31,8 @@ def StrToDict(dictstr):
 def StrToDict2(dictstr):
     exec ("d=" + a)
     return d
+
+def HexToBin(hexstr):
+    #十六进制转成二进制
+    binstr = bin(int(hexstr,16))
+    return binstr

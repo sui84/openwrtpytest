@@ -7,10 +7,8 @@ import time
 from flask import Flask, request,make_response,render_template
 import hashlib
 import xml.etree.ElementTree as ET
-import timehelper
 import loghelper
 import traceback
-import fhelper
 import requests
 import os
 import pprint
@@ -39,7 +37,6 @@ def wechat_auth():
         if request.method == 'GET':
             token='weixintest'
             data = request.args
-            pprint.pprint( "Request get data:",data)
             signature = data.get('signature','')
             timestamp = data.get('timestamp','')
             nonce = data.get('nonce','')
@@ -134,6 +131,8 @@ def get_replytext(content):
             data=api.tradition(content)
         elif content.startswith(u"汇率"):
             data=api.huilv(content)
+        elif content.startswith(u"域名"):
+            data=api.domain(content)
         else:
             data = api.weather(content)
         cachedb.set(content,data)

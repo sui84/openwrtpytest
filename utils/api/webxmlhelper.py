@@ -17,7 +17,7 @@ import pprint
 DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 YAMLF = os.path.join(DIR,'conf/test.yaml')
 EXCELF = os.path.join(DIR,'excel/test.xlsx')
-DBF = os.path.join(DIR,'data/test.db')
+DBF = os.path.join(DIR,'data/pickledb/test.db')
 XMLPATH = os.path.join(DIR,'xml/%s%s.xml')
 with open(YAMLF) as f:
     YAMLDATA=yaml.load(f)

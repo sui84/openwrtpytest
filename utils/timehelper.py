@@ -1,6 +1,7 @@
 #encoding=utf-8
 import time
 import datetime
+import arrow
 '''
 time.time()
 time.localtime()
@@ -12,6 +13,10 @@ time.mktime(time.localtime())
 class TimeHelper(object):
     def __init__(self):
         pass
+
+    def ConvertHundredYear(self,hdate):
+        datestr=str(arrow.get(hdate))
+        return datestr
 
     def GetCurrentTimeStr(self, fmt='%Y/%m/%d %H:%M:%S'):
         return time.strftime(fmt)

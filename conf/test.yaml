@@ -12,6 +12,7 @@ threadnum : 8
 weatherurl : http://www.sojson.com/open/api/weather/json.shtml?city=%s
 ipusls : ["http://ip.chinaz.com/getip.aspx"]
 ipdat : ../data/qqwry.dat
+ipkurl : http://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/
 owxlink : http://q18631322a.iok.la/?signature=e72198e318fb2ac0f6a3c81d5a3b4357e3adaa8b&echostr=2292380436266924142&timestamp=1503574028&nonce=1104466989
 wxlink : http://192.168.1.1:8001/?signature=e72198e318fb2ac0f6a3c81d5a3b4357e3adaa8b&echostr=2292380436266924142&timestamp=1503574028&nonce=1104466989
 #字符串可以写成多行，从第二行开始，必须有一个单空格缩进。换行符会被转为空格。多行字符串可以使用|保留换行符，也可以使用>折叠换行。

@@ -1,2 +1,2 @@
 
-__all__ = ['webxmlhelper']
+__all__ = ['webxmlhelper','htmlhelper']

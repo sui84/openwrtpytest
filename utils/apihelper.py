@@ -5,7 +5,6 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 import HTMLParser
 import requests
-import strhelper
 import geohelper
 import ipinfohelper
 import pprint
@@ -15,7 +14,7 @@ from py_linq import Enumerable
 from api import *
 import xlshelper
 excelpath = '../excel/test.xlsx'
-testfpath='../data/test.db'
+testfpath='../data/pickledb/test.db'
 testdb = pickledb.load(testfpath,True)
 import strhelper
 
@@ -294,11 +293,18 @@ class ApiHelper(object):
         return info
 
     def huilv(self,content):
-        import htmlhelper
         curs = ['USD','MOP']
         info = ''
         for cur in curs:
-            info += (htmlhelper.GetHuiLV('CNY',cur))
+            info += (htmlhelper.GetHuiLV('CNY', cur))
+        return info
+
+    def domain(self,content):
+        strs = self.sh.SplitString(content)
+        if len(strs)>1:
+            info = htmlhelper.GetDomain(strs[1])
+        else:
+            info = htmlhelper.GetDomain('116.255.220.141')
         return info
 
 if __name__ == '__main__':
