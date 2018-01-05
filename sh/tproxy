@@ -1,5 +1,0 @@
-#!/bin/sh
-cat /mnt/sda1/temp/tinyproxy.log | grep 'CONNECT ' >>  /mnt/sda1/temp/tinyproxy.connlog
-cat /mnt/sda1/temp/tinyproxy.log  >>  /mnt/sda1/temp/tinyproxy.fulllog
-sleep 60000
-:> /mnt/sda1/temp/tinyproxy.log

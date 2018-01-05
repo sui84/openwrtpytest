@@ -1,1 +1,0 @@
-python -u /usr/src/raspbianpytest/utils/image/pilhelper.py 2>>/usr/log/log 1>>/usr/log/log &

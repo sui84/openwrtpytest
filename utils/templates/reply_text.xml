@@ -9,8 +9,10 @@
 {% else %}
     {# image , voice  #}
     <MsgType><![CDATA[{{dict['type']}}]]></MsgType>
-    <Image><MediaId><![CDATA[iCAGChBV08JYpQwwc-RfgxEoPl1cKQsJrWOTr0F58gbJCOjLNRGmMvuKQGBZxBLG]]></MediaId>
-	</Image>
+    <MsgType><![CDATA[image]]></MsgType>
+    <PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz_jpg/BWyYmYdBMcjYvWJd4eYtfxxhjRTgglUx0niatQ7vEcTTPoVjxunFDaLn6Qp0E03G92tXujP6jqxX71o29KPTR8g/0l]]></PicUrl>
+    <MediaId><![CDATA[NUtSHdhZ1Erf_lp7dTNMRp5BmuVjjW3ylb6M62TqNdYYqiR_-Yo4gAwc1n4cArSd]]></MediaId>
+    <MsgId>6476818010005236536</MsgId>
 {%- endif %}
 <FuncFlag>0</FuncFlag>
 </xml>
