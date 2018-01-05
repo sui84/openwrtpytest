@@ -1,7 +1,11 @@
 #!/mnt/sda1/opkg/usr/bin/python
 import functools
 import logging
+import yaml
 
+data=open('../conf/test.yaml','r')
+ydata=yaml.load(data)
+LogPath =ydata.get('logpath')
     
 def exception(logger):
     """
@@ -29,7 +33,7 @@ def exception(logger):
     return decorator
     
     
-def create_logger(logpath='/mnt/sda1/temp/log'):
+def create_logger(logpath=LogPath):
     """
     Creates a logging object and returns it
     """
@@ -47,7 +51,7 @@ def create_logger(logpath='/mnt/sda1/temp/log'):
     logger.addHandler(fh)
     return logger
 
-logger = create_logger('/mnt/sda1/temp/log')
+logger = create_logger(LogPath)
 @exception(logger)
 def zero_divide(i,j):
     i/j

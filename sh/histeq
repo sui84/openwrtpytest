@@ -1,0 +1,1 @@
+python -u /usr/src/raspbianpytest/utils/image/histeqlhelper.py 2>>/usr/log/log 1>>/usr/log/log &
