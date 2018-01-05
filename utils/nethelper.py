@@ -226,15 +226,16 @@ def handle_http_payload(pkgtime,load):
         if len(ftype)>1 and ftype[0].lower()=="image":
             imagesuffix = ftype[1]
             scapyhelper.AppendPkg(imagefile,pkt)
-    
-        s=firstline.split(' ',2)
-        if httptype == 'HTTPRequest':
-            url=s[1]    
-            # Print search terms
-            searched = get_http_searches(url, body, host)
-            
-        elif httptype == 'HTTPResponse':
-            status = s[1]
+
+        if len(firstline)>0:
+            s=firstline.split(' ',2)
+            if httptype == 'HTTPRequest':
+                url=s[1]
+                # Print search terms
+                searched = get_http_searches(url, body, host)
+
+            elif httptype == 'HTTPResponse':
+                status = s[1]
             
         if body != '':
             user_msg,pass_msg = get_login_pass(body)

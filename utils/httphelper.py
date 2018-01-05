@@ -29,6 +29,9 @@ class HttpHelper(object):
         self.xmlheaders['Content-Type']="text/xml;charset=UTF-8"
         self.soapxmlheaders=headers
         self.soapxmlheaders['Content-Type']="application/soap+xml;charset=UTF-8"
+        self.hs = {'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch' , 'Accept': '*/*'
+            , 'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)'
+            , 'Connection': 'keep-alive', 'Cache-Control': 'no-cache', 'Content-Type': 'text/xml;charset=UTF-8'}
     
     # send get request
     def GetResponse(self,host):
@@ -89,7 +92,7 @@ class HttpHelper(object):
     # send soap request
     def PostXMLRequest(self,url,xml):
         import requests
-        response=requests.post(url,data=xml,headers=self.xmlheaders)
+        response=requests.post(url,data=xml,headers=self.hs)
         if response.status_code==200:
             data = response.text
         else:
