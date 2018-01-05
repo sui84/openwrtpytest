@@ -13,9 +13,6 @@ import yaml
 from py_linq import Enumerable
 from api import *
 import xlshelper
-excelpath = '../excel/test.xlsx'
-testfpath='../data/pickledb/test.db'
-testdb = pickledb.load(testfpath,True)
 import strhelper
 
 class ApiHelper(object):
@@ -28,6 +25,9 @@ class ApiHelper(object):
             self.yamldata=yaml.load(f)
         self.weatherurl= self.yamldata.get('weatherurl')
         self.ipusls=self.yamldata.get('ipusls')
+        self.excelpath = '../excel/test.xlsx'
+        testfpath='../data/pickledb/test.db'
+        self.testdb = pickledb.load(testfpath,True)
 
 
     def weather(self,city):
@@ -172,7 +172,7 @@ class ApiHelper(object):
             if content == u"航班":
                 dicts=testdb.get('airlines')
                 if dicts == None:
-                    dicts = xlshelper.XlsHelper(excelpath).GetSheetToDicts("airlines")
+                    dicts = xlshelper.XlsHelper(self.excelpath).GetSheetToDicts("airlines")
                 colls=Enumerable(dicts)
                 companys=colls.select (lambda x:x.get('Company')).distinct().to_list()
                 modes=colls.select (lambda x:x.get('Mode')).distinct().to_list()

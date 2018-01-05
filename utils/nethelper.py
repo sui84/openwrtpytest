@@ -49,13 +49,13 @@ import arrow
 
 iface=conf.iface
 fmt='%Y/%m/%d %H:%M:%S'
-logfile='/mnt/sda1/temp/credentials.txt'
-cappath = '/mnt/sda1/cap/'
-udpfile = '/mnt/sda1/cap/protocol/udp.cap'
-tcpfile = '/mnt/sda1/cap/protocol/tcp.cap'
-etherfile = '/mnt/sda1/cap/protocol/ether.cap'
-imagefile = '/mnt/sda1/cap/protocol/image.cap'
-otherfile = '/mnt/sda1/cap/protocol/other.cap'
+logfile='/usr/log/credentials.txt'
+cappath = '/usr/cap/'
+udpfile = os.path.join(cappath,'protocol/udp.cap')
+tcpfile = os.path.join(cappath,'protocol/tcp.cap')
+etherfile = os.path.join(cappath,'protocol/ether.cap')
+imagefile = os.path.join(cappath,'protocol/image.cap')
+otherfile = os.path.join(cappath,'protocol/other.cap')
 mail= {"ports":[25,110],"file":'protocol/mail.cap'}
 terminal= {"ports":[22,23,3389],"file":'protocol/terminal.cap'}
 http= {"ports":[80,443,8080,3128,8081,9080],"file":'protocol/http.cap'}
@@ -99,7 +99,7 @@ def SaveHttpFromPkgs(pkgs):
             pkgtime = str(arrow.get(pkt.time))
             load = pkt[Raw].load
             print i,load
-            handle_http_payload(pkgtime,load)
+            handle_http(pkgtime,load)
         i+=1
 
 def pkgs_split(pkgs,pkgtype):
@@ -113,7 +113,7 @@ def pkg_split(pkt):
         scapyhelper.AppendPkg(etherfile,pkt)
 
     if pkt.haslayer(UDP) and pkt.haslayer(IP) and pkt.haslayer(Raw):
-        scapyhelper.AppendPkg(udpfile,pkt)    
+        scapyhelper.AppendPkg(udpfile,pkt)
     elif pkt.haslayer(TCP) and pkt.haslayer(Raw) and pkt.haslayer(IP):    
         scapyhelper.AppendPkg(tcpfile,pkt)
         
@@ -156,9 +156,7 @@ def pkt_parser(pkt):
         pkg_split(pkgtime,pkt)
 
         if pkt.haslayer(Raw):
-            load = pkt[Raw].load
-
-            handle_http_payload(pkgtime,load)
+            handle_http(pkgtime,pkt)
     except Exception,e:
         pkt.show()
         print time.ctime(), 'Error:',e.message,'\n',traceback.format_exc()
@@ -194,8 +192,6 @@ def get_http_searches(http_url_req, body, host):
         return msg
 
 
-
-
 def Decode_Ip_Packet(s):
     '''
     Taken from PCredz, solely to get Kerb parsing
@@ -208,7 +204,8 @@ def Decode_Ip_Packet(s):
     d['data']=s[4*d['header_len']:]
     return d
 
-def handle_http_payload(pkgtime,load):
+def handle_http(pkgtime,pkt):
+    load = pkt[Raw].load
     httptype = guess_payload_class(load)
     if httptype=='HTTPRequest' or httptype=='HTTPResponse':
         firstline,headers,body = parse_headers_and_body(load)
@@ -221,27 +218,29 @@ def handle_http_payload(pkgtime,load):
         user_msg = ''
         pass_msg = ''
         url=''
-        body=''
         ftype = contenttype.split('/',1)
-        if len(ftype)>1 and ftype[0].lower()=="image":
-            imagesuffix = ftype[1]
+        if "image" in ftype:
             scapyhelper.AppendPkg(imagefile,pkt)
-    
-        s=firstline.split(' ',2)
-        if httptype == 'HTTPRequest':
-            url=s[1]    
-            # Print search terms
-            searched = get_http_searches(url, body, host)
-            
-        elif httptype == 'HTTPResponse':
-            status = s[1]
+
+        if len(firstline)>0:
+            s=firstline.split(' ',2)
+            if httptype == 'HTTPRequest':
+                url=s[1]
+                # Print search terms
+                searched = get_http_searches(url, body, host)
+
+            elif httptype == 'HTTPResponse':
+                status = s[1]
             
         if body != '':
             user_msg,pass_msg = get_login_pass(body)
 
-        
-        httpdict = {'pkgtime':pkgtime,'host':host,'url':url,'referer':referer,'cookie':cookie,'type':contenttype,'searched':searched,'body':body
-        ,'status':status,'load':load,'user_msg':user_msg,'pass_msg':pass_msg}
+        if not url.startswith('http'):
+            url=host+url
+
+        httpdict = {'pkgtime':pkgtime,'macsrc':pkt[Ether].src,'ipsrc':pkt[IP].src,'sport':pkt[TCP].sport,'macdst':pkt[Ether].dst,'ipdst':pkt[IP].dst,'dport':pkt[TCP].dport
+                    ,'httptype':httptype,'headers':headers,'host':host,'url':url,'referer':referer,'cookie':cookie,'type':contenttype,'searched':searched,'body':body.decode("unicode_escape")
+                     ,'status':status,'load':load.decode("unicode_escape"),'user_msg':user_msg,'pass_msg':pass_msg}
         mh.SaveDictObj(httpdict,'httpinfo')
         
 def guess_payload_class(payload):

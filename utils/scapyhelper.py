@@ -24,8 +24,7 @@ print RandMAC()
 
 
 def SanPort(ip,ports):
-    # ports = (80,83)
-    # flags=SA -> open，flags=RA -> not open
+    # ports = (80,83)  SA open , RA not open
     ans=sr(IP(dst=ip)/TCP(dport=ports,flags="S"))
     for an in ans:
         an.summary()
