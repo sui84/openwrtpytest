@@ -1,0 +1,3 @@
+netstat -atpn | grep tinyproxy | awk '{print $7}'|cut -c 1-4 |xargs kill -9
+/mnt/sda1/opkg/usr/sbin/tinyproxy -d 2>>/mnt/sda1/temp/tinyproxy.log 1>>/mnt/sda1/temp/tinyproxy.log &
+

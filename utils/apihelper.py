@@ -8,27 +8,15 @@ import requests
 import geohelper
 import ipinfohelper
 import pprint
-import pickledb
-import yaml
-from py_linq import Enumerable
 from api import *
-import xlshelper
-excelpath = '../excel/test.xlsx'
-testfpath='../data/pickledb/test.db'
-testdb = pickledb.load(testfpath,True)
 import strhelper
+import arrow
 
 class ApiHelper(object):
     def __init__(self):
         self.sh = strhelper.StrHelper()
         self.hp =HTMLParser.HTMLParser()
         self.gh = geohelper.GeoHelper()
-        yamlf = r"../conf/test.yaml"
-        with open(yamlf) as f:
-            self.yamldata=yaml.load(f)
-        self.weatherurl= self.yamldata.get('weatherurl')
-        self.ipusls=self.yamldata.get('ipusls')
-
 
     def weather(self,city):
         (wdu,jdu) = self.gh.GetWJdu(city)
@@ -158,50 +146,41 @@ class ApiHelper(object):
                 #datadict=self.hp.unescape(self.sh.Jsonstr2Obj(req.text))
                 result+="%s\n%s" %(datadict.get('ip'),datadict.get('address'))
         else:
-            ih=ipinfohelper.IPInfo(self.yamldata.get('ipdat'))
+            ih=ipinfohelper.IPInfo(webxmlhelper.YAMLDATA.get('ipdat'))
             (address,yunying) = ih.getIPAddr(ip)
             result+="%s\n%s\t%s" % (ip,address,yunying)
         return result
 
     def airline(self,content):
-        if content.startswith(u"航班号"):
-            colls = airlinehelper.getaircoll("airlines")
-            airlinecodes=colls.select (lambda x:x.get('AirlineCode')).distinct().to_list()
-            info = u"珠海机场航班号：%s\n" %(', '.join(airlinecodes))
-        elif content.startswith(u"航班"):
+        if content == u"航班号" or content == u"航班":
+            airlines = webxmlhelper.GetCollFromXLS("airlines")
+            if content == u"航班号":
+                airlinecodes=airlines.select (lambda x:x.get('AirlineCode')).distinct().to_list()
+                info = u"珠海机场航班号：%s\n" %(', '.join(airlinecodes))
             if content == u"航班":
-                dicts=testdb.get('airlines')
-                if dicts == None:
-                    dicts = xlshelper.XlsHelper(excelpath).GetSheetToDicts("airlines")
-                colls=Enumerable(dicts)
-                companys=colls.select (lambda x:x.get('Company')).distinct().to_list()
-                modes=colls.select (lambda x:x.get('Mode')).distinct().to_list()
-                arrivedromes = colls.select (lambda x:x.get('ArriveDrome')).distinct().to_list()
+                companys=airlines.select (lambda x:x.get('Company')).distinct().to_list()
+                modes=airlines.select (lambda x:x.get('Mode')).distinct().to_list()
+                arrivedromes = airlines.select (lambda x:x.get('ArriveDrome')).distinct().to_list()
                 '''
                 startdromes = colls.select (lambda x:x.get('StartDrome')).distinct().to_list()
                 info = u"航空公司：%s\n机型：%s\n到珠海的机场：%s\n从珠海可以到达的机场：%s\n航班号：%s\n" %(companys,modes,startdromes,arrivedromes,airlinecodes)
                 '''
                 info = u"航空公司：%s\n机型：%s\n从珠海可以到达的机场：%s\n" %(', '.join(companys),', '.join(modes),', '.join(arrivedromes))
+        else:
+            strs = self.sh.SplitString(content)
+            if len(strs) < 3:
+                fcabbs,tcabbs = webxmlhelper.GetAbb(None,strs[1])
             else:
-                strs = self.sh.SplitString(content)
-                if len(strs) < 3:
-                    fcabbs = "ZUH"
-                    dicts=testdb.get('citycodes')
-                    colls=Enumerable(dicts)
-                    tcabbs = airlinehelper.GetAbb(colls,strs[1])
-                else:
-                    fcabbs,tcabbs = airlinehelper.GetAbbs(strs[1],strs[2])
-                results = webxmlhelper.GetResponse('airurl',"getDomesticAirlinesTime",fcabbs,tcabbs)
-                print results
-                info = ""
-                if len(results) > 0:
-                    for result in results:
-                        info += u"%s\n%s\t%s\t%s\t%s\n%s到%s\n%s-%s\n\n" % (result.get('Company'),result.get('AirlineCode'),result.get('Week'),result.get('Mode') ,result.get('AirlineStop')
-                        ,result.get('StartDrome'),result.get('ArriveDrome'),result.get('StartTime'),result.get('ArriveTime'))
-                else:
-                    info = u"没有航班"
-
-
+                fcabbs,tcabbs = webxmlhelper.GetAbbs(strs[1],strs[2])
+            results = webxmlhelper.GetResponse('airurl',"getDomesticAirlinesTime",fcabbs,tcabbs)
+            print results
+            info = ""
+            if len(results) > 0:
+                for result in results:
+                    info += u"%s\n%s\t%s\t%s\t%s\n%s到%s\n%s-%s\n\n" % (result.get('Company'),result.get('AirlineCode'),result.get('Week'),result.get('Mode') ,result.get('AirlineStop')
+                    ,result.get('StartDrome'),result.get('ArriveDrome'),result.get('StartTime'),result.get('ArriveTime'))
+            else:
+                info = u"没有航班"
 
         pprint.pprint(info)
         return info
@@ -211,7 +190,7 @@ class ApiHelper(object):
         print strs
         info = ""
         if content.startswith(u"火车号"):
-            results = webxmlhelper.GetResponse('trainurl',"getDetailInfoByTrainCode",xh.Convert2UTF8(strs[1]))
+            results = webxmlhelper.GetResponse('trainurl',"getDetailInfoByTrainCode",strs[1].encode('utf8'))
             if len(results) > 0 and results[0].get('StartTime')<>None:
                 i = 1
                 for result in results:
@@ -220,7 +199,7 @@ class ApiHelper(object):
                     i+=1
             else:
                 info = u"没有班次"
-        elif content.startswith(u"火车"):
+        elif content.startswith(u"火车") and len(strs)>1:
             if len(strs) < 3:
                 fsta = u"广州"
             else:
@@ -239,6 +218,27 @@ class ApiHelper(object):
                 info = u"没有班次"
 
 
+        pprint.pprint(info)
+        return info
+
+    def bus(self,content):
+        strs = self.sh.SplitString(content)
+        print strs
+        info = ""
+        if content.startswith(u"汽车"):
+            if len(strs) > 1:
+                fcity = strs[1]
+                if len(strs) > 2:
+                    tcity = strs[2]
+                else:
+                    tcity = u'广州'
+                if len(strs) > 3:
+                    datestr = strs[3]
+                else:
+                    datestr = arrow.utcnow().format('YYYY-MM-DD')
+                info = pyqueryhelper.GetBusTicket(fcity,tcity,datestr)
+            else:
+                info = u"没有班次"
         pprint.pprint(info)
         return info
 

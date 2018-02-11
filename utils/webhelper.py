@@ -11,7 +11,6 @@ import urllib
 import traceback
 from wechat import app
 import commands
-import web
 
 
 PORT = 8001

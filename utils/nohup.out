@@ -1,0 +1,98 @@
+Serving HTTP on port  8001
+Request post data: <xml><ToUserName><![CDATA[gh_aa51bd9e39d7]]></ToUserName>
+<FromUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></FromUserName>
+<CreateTime>1518263113</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[珠海]]></Content>
+<MsgId>6520890417483762549</MsgId>
+</xml>
+u'enter content :\u73e0\u6d77'
+get it from cache
+u'\u7eac\u5ea6:21.974525\n\u7ecf\u5ea6:113.931350\n\u73e0\u6d77\t20180210\n\u6e29\u5ea6:14\t\u6e7f\u5ea6:76%\tPM25:87 \u8f7b\u5ea6\u6c61\u67d3\n07:02\t18:1909\u65e5\u661f\u671f\u4e94 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 15.0\u2103~\u9ad8\u6e29 17.0\u2103\n10\u65e5\u661f\u671f\u516d \u9634 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 19.0\u2103\n11\u65e5\u661f\u671f\u65e5 \u9634 \u5317\u98ce 3-4\u7ea7\n \u4f4e\u6e29 10.0\u2103~\u9ad8\u6e29 16.0\u2103\n12\u65e5\u661f\u671f\u4e00 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 15.0\u2103\n13\u65e5\u661f\u671f\u4e8c \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 14.0\u2103~\u9ad8\u6e29 18.0\u2103\n'
+{'from': 'gh_aa51bd9e39d7',
+ 'msg': u'\u7eac\u5ea6:21.974525\n\u7ecf\u5ea6:113.931350\n\u73e0\u6d77\t20180210\n\u6e29\u5ea6:14\t\u6e7f\u5ea6:76%\tPM25:87 \u8f7b\u5ea6\u6c61\u67d3\n07:02\t18:1909\u65e5\u661f\u671f\u4e94 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 15.0\u2103~\u9ad8\u6e29 17.0\u2103\n10\u65e5\u661f\u671f\u516d \u9634 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 19.0\u2103\n11\u65e5\u661f\u671f\u65e5 \u9634 \u5317\u98ce 3-4\u7ea7\n \u4f4e\u6e29 10.0\u2103~\u9ad8\u6e29 16.0\u2103\n12\u65e5\u661f\u671f\u4e00 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 15.0\u2103\n13\u65e5\u661f\u671f\u4e8c \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 14.0\u2103~\u9ad8\u6e29 18.0\u2103\n',
+ 'time': '1518263114',
+ 'to': 'or0iKv0sQHnLvqHyuDP9V29IciE0',
+ 'type': 'text'}
+{'_on_close': [],
+ '_status': '200 OK',
+ '_status_code': 200,
+ 'direct_passthrough': False,
+ 'headers': Headers([('Content-Type', u'application/xml;charset=utf-8'), ('Content-Length', u'742')]),
+ 'response': ['<xml>\n<ToUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></ToUserName>\n<FromUserName><![gh_aa51bd9e39d7]]></FromUserName>\n<CreateTime>1518263114</CreateTime>\n    <MsgType><![CDATA[text]]></MsgType>\n    <Content><![CDATA[\xe7\xba\xac\xe5\xba\xa6:21.974525\n\xe7\xbb\x8f\xe5\xba\xa6:113.931350\n\xe7\x8f\xa0\xe6\xb5\xb7\t20180210\n\xe6\xb8\xa9\xe5\xba\xa6:14\t\xe6\xb9\xbf\xe5\xba\xa6:76%\tPM25:87 \xe8\xbd\xbb\xe5\xba\xa6\xe6\xb1\xa1\xe6\x9f\x93\n07:02\t18:1909\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe4\xba\x94 \xe5\xa4\x9a\xe4\xba\x91 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 15.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 17.0\xe2\x84\x83\n10\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe5\x85\xad \xe9\x98\xb4 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 11.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 19.0\xe2\x84\x83\n11\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe6\x97\xa5 \xe9\x98\xb4 \xe5\x8c\x97\xe9\xa3\x8e 3-4\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 10.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 16.0\xe2\x84\x83\n12\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe4\xb8\x80 \xe5\xa4\x9a\xe4\xba\x91 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 11.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 15.0\xe2\x84\x83\n13\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe4\xba\x8c \xe5\xa4\x9a\xe4\xba\x91 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 14.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 18.0\xe2\x84\x83\n]]></Content>\n\n<FuncFlag>0</FuncFlag>\n</xml>']}
+192.168.1.198 - - [10/Feb/2018 12:45:14] "POST /?signature=f5bacc614b16110e4043f87f80cc01d53999d7b1&timestamp=1518263113&nonce=1284420676&openid=or0iKv0sQHnLvqHyuDP9V29IciE0 HTTP/1.1" 200 742
+Request post data: <xml><ToUserName><![CDATA[gh_aa51bd9e39d7]]></ToUserName>
+<FromUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></FromUserName>
+<CreateTime>1518263588</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[珠海]]></Content>
+<MsgId>6520892457593228219</MsgId>
+</xml>
+u'enter content :\u73e0\u6d77'
+get it from cache
+u'\u7eac\u5ea6:21.974525\n\u7ecf\u5ea6:113.931350\n\u73e0\u6d77\t20180210\n\u6e29\u5ea6:14\t\u6e7f\u5ea6:76%\tPM25:87 \u8f7b\u5ea6\u6c61\u67d3\n07:02\t18:1909\u65e5\u661f\u671f\u4e94 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 15.0\u2103~\u9ad8\u6e29 17.0\u2103\n10\u65e5\u661f\u671f\u516d \u9634 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 19.0\u2103\n11\u65e5\u661f\u671f\u65e5 \u9634 \u5317\u98ce 3-4\u7ea7\n \u4f4e\u6e29 10.0\u2103~\u9ad8\u6e29 16.0\u2103\n12\u65e5\u661f\u671f\u4e00 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 15.0\u2103\n13\u65e5\u661f\u671f\u4e8c \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 14.0\u2103~\u9ad8\u6e29 18.0\u2103\n'
+{'from': 'gh_aa51bd9e39d7',
+ 'msg': u'\u7eac\u5ea6:21.974525\n\u7ecf\u5ea6:113.931350\n\u73e0\u6d77\t20180210\n\u6e29\u5ea6:14\t\u6e7f\u5ea6:76%\tPM25:87 \u8f7b\u5ea6\u6c61\u67d3\n07:02\t18:1909\u65e5\u661f\u671f\u4e94 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 15.0\u2103~\u9ad8\u6e29 17.0\u2103\n10\u65e5\u661f\u671f\u516d \u9634 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 19.0\u2103\n11\u65e5\u661f\u671f\u65e5 \u9634 \u5317\u98ce 3-4\u7ea7\n \u4f4e\u6e29 10.0\u2103~\u9ad8\u6e29 16.0\u2103\n12\u65e5\u661f\u671f\u4e00 \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 11.0\u2103~\u9ad8\u6e29 15.0\u2103\n13\u65e5\u661f\u671f\u4e8c \u591a\u4e91 \u65e0\u6301\u7eed\u98ce\u5411 <3\u7ea7\n \u4f4e\u6e29 14.0\u2103~\u9ad8\u6e29 18.0\u2103\n',
+ 'time': '1518263588',
+ 'to': 'or0iKv0sQHnLvqHyuDP9V29IciE0',
+ 'type': 'text'}
+{'_on_close': [],
+ '_status': '200 OK',
+ '_status_code': 200,
+ 'direct_passthrough': False,
+ 'headers': Headers([('Content-Type', u'application/xml;charset=utf-8'), ('Content-Length', u'742')]),
+ 'response': ['<xml>\n<ToUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></ToUserName>\n<FromUserName><![gh_aa51bd9e39d7]]></FromUserName>\n<CreateTime>1518263588</CreateTime>\n    <MsgType><![CDATA[text]]></MsgType>\n    <Content><![CDATA[\xe7\xba\xac\xe5\xba\xa6:21.974525\n\xe7\xbb\x8f\xe5\xba\xa6:113.931350\n\xe7\x8f\xa0\xe6\xb5\xb7\t20180210\n\xe6\xb8\xa9\xe5\xba\xa6:14\t\xe6\xb9\xbf\xe5\xba\xa6:76%\tPM25:87 \xe8\xbd\xbb\xe5\xba\xa6\xe6\xb1\xa1\xe6\x9f\x93\n07:02\t18:1909\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe4\xba\x94 \xe5\xa4\x9a\xe4\xba\x91 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 15.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 17.0\xe2\x84\x83\n10\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe5\x85\xad \xe9\x98\xb4 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 11.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 19.0\xe2\x84\x83\n11\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe6\x97\xa5 \xe9\x98\xb4 \xe5\x8c\x97\xe9\xa3\x8e 3-4\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 10.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 16.0\xe2\x84\x83\n12\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe4\xb8\x80 \xe5\xa4\x9a\xe4\xba\x91 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 11.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 15.0\xe2\x84\x83\n13\xe6\x97\xa5\xe6\x98\x9f\xe6\x9c\x9f\xe4\xba\x8c \xe5\xa4\x9a\xe4\xba\x91 \xe6\x97\xa0\xe6\x8c\x81\xe7\xbb\xad\xe9\xa3\x8e\xe5\x90\x91 &lt;3\xe7\xba\xa7\n \xe4\xbd\x8e\xe6\xb8\xa9 14.0\xe2\x84\x83~\xe9\xab\x98\xe6\xb8\xa9 18.0\xe2\x84\x83\n]]></Content>\n\n<FuncFlag>0</FuncFlag>\n</xml>']}
+192.168.1.198 - - [10/Feb/2018 12:53:08] "POST /?signature=2c0327120b0c5f38385874ef1c61837db33e1ecc&timestamp=1518263588&nonce=46696248&openid=or0iKv0sQHnLvqHyuDP9V29IciE0 HTTP/1.1" 200 742
+Request post data: <xml><ToUserName><![CDATA[gh_aa51bd9e39d7]]></ToUserName>
+<FromUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></FromUserName>
+<CreateTime>1518263819</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[帮助]]></Content>
+<MsgId>6520893449730673617</MsgId>
+</xml>
+u'enter content :\u5e2e\u52a9'
+{u'message': u'Check the parameters.'}
+{'_on_close': [],
+ '_status': '200 OK',
+ '_status_code': 200,
+ 'direct_passthrough': False,
+ 'headers': Headers([('Content-Type', u'text/html; charset=utf-8'), ('Content-Length', u'271')]),
+ 'response': ['<xml>\n<ToUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></ToUserName>\n<FromUserName><![gh_aa51bd9e39d7]]></FromUserName>\n<CreateTime>1518263826</CreateTime>\n    <MsgType><![CDATA[text]]></MsgType>\n    <Content><![CDATA[status]]></Content>\n\n<FuncFlag>0</FuncFlag>\n</xml>']}
+192.168.1.198 - - [10/Feb/2018 12:57:06] "POST /?signature=be2b4800983932504e0f5c98e5f58e57b81d9e6a&timestamp=1518263819&nonce=546142059&openid=or0iKv0sQHnLvqHyuDP9V29IciE0 HTTP/1.1" 200 271
+Traceback (most recent call last):
+  File "/opt/lib/python2.7/wsgiref/handlers.py", line 86, in run
+  File "/opt/lib/python2.7/wsgiref/handlers.py", line 128, in finish_response
+  File "/opt/lib/python2.7/wsgiref/handlers.py", line 212, in write
+  File "/opt/lib/python2.7/wsgiref/handlers.py", line 271, in send_headers
+  File "/opt/lib/python2.7/socket.py", line 328, in write
+  File "/opt/lib/python2.7/socket.py", line 307, in flush
+error: [Errno 32] Broken pipe
+192.168.1.198 - - [10/Feb/2018 12:57:06] "POST /?signature=be2b4800983932504e0f5c98e5f58e57b81d9e6a&timestamp=1518263819&nonce=546142059&openid=or0iKv0sQHnLvqHyuDP9V29IciE0 HTTP/1.1" 500 59
+----------------------------------------
+Exception happened during processing of request from ('192.168.1.198', 44399)
+Traceback (most recent call last):
+  File "/opt/lib/python2.7/SocketServer.py", line 290, in _handle_request_noblock
+  File "/opt/lib/python2.7/SocketServer.py", line 318, in process_request
+  File "/opt/lib/python2.7/SocketServer.py", line 331, in finish_request
+  File "/opt/lib/python2.7/SocketServer.py", line 654, in __init__
+  File "/opt/lib/python2.7/SocketServer.py", line 713, in finish
+  File "/opt/lib/python2.7/socket.py", line 283, in close
+  File "/opt/lib/python2.7/socket.py", line 307, in flush
+error: [Errno 32] Broken pipe
+----------------------------------------
+Request post data: <xml><ToUserName><![CDATA[gh_aa51bd9e39d7]]></ToUserName>
+<FromUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></FromUserName>
+<CreateTime>1518263819</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[帮助]]></Content>
+<MsgId>6520893449730673617</MsgId>
+</xml>
+u'enter content :\u5e2e\u52a9'
+{u'message': u'Check the parameters.'}
+{'_on_close': [],
+ '_status': '200 OK',
+ '_status_code': 200,
+ 'direct_passthrough': False,
+ 'headers': Headers([('Content-Type', u'text/html; charset=utf-8'), ('Content-Length', u'271')]),
+ 'response': ['<xml>\n<ToUserName><![CDATA[or0iKv0sQHnLvqHyuDP9V29IciE0]]></ToUserName>\n<FromUserName><![gh_aa51bd9e39d7]]></FromUserName>\n<CreateTime>1518263827</CreateTime>\n    <MsgType><![CDATA[text]]></MsgType>\n    <Content><![CDATA[status]]></Content>\n\n<FuncFlag>0</FuncFlag>\n</xml>']}
+192.168.1.198 - - [10/Feb/2018 12:57:07] "POST /?signature=be2b4800983932504e0f5c98e5f58e57b81d9e6a&timestamp=1518263819&nonce=546142059&openid=or0iKv0sQHnLvqHyuDP9V29IciE0 HTTP/1.1" 200 271
