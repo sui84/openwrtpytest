@@ -1,5 +1,9 @@
 # -*- encoding=utf-8 -*-
 import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+import pprint
 '''
 
     1 (1-bit pixels, black and white, stored with one pixel per byte)
@@ -247,7 +251,7 @@ def resizeImg(ifile,ofile, dst_w=0, dst_h=0, qua=85):
         newHeight = ori_h
 
     im.resize((newWidth,newHeight),Image.ANTIALIAS).save(ofile, "PNG", quality=qua)
-    print u'等比压缩完成',ifile
+    print '等比压缩完成 ',ifile
 
     '''
     Image.ANTIALIAS还有如下值：
@@ -262,7 +266,8 @@ def resizeFolderImg(idir,odir, dst_w=0, dst_h=0, qua=85):
         ifile = os.path.join(idir,f)
         if os.path.isfile(ifile):
             ofile = os.path.join(odir,f)
-            resizeImg(ifile,ofile, dst_w, qua)
+            resizeImg(ifile,ofile, dst_w, dst_h,qua)
+            os.remove(ifile)
 
 #裁剪压缩图片
 def clipResizeImg(im, dst_w, dst_h, qua=95):
@@ -314,8 +319,8 @@ if __name__ == "__main__":
     #change_bgcolor(r'd:\temp\zj.png',r'd:\temp\zj2.png')
     #merge_image('RGB',[r"D:\Temp\test0.jpg",r"D:\Temp\test1.jpg",r"D:\Temp\test2.jpg"],r"d:\temp\test.jpg")
      #image 对象
-    resizeImg(r'/mnt/sda1/temp/bq1.jpg',r'/mnt/sda1/temp/xl1.jpg', dst_w=200, qua=99)
-    #resizeFolderImg(r'd:\temp\bq',r'd:\temp\bq\out', dst_w=200, qua=99)
+    #resizeImg(r'/mnt/sda1/temp/bq1.jpg',r'/mnt/sda1/temp/xl1.jpg', dst_w=200, dst_h=0,qua=100)
+    resizeFolderImg('/mnt/sda1/opt/img/biaoqing','/mnt/sda1/opt/img/biaoqing/out', dst_w=200, dst_h=0, qua=100)
     '''
     主要是实现功能， 代码没怎么整理
     '''

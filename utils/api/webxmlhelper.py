@@ -4,20 +4,20 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.append('..')
 import yaml
-import xmlhelper
-import httphelper
-import xlshelper
+from utils import xmlhelper
+from utils import httphelper
+from utils import xlshelper
 from py_linq import Enumerable
 import pickledb
 import urlparse
 import itertools
-import strhelper
+from utils import strhelper
 import pprint
 
 DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 YAMLF = os.path.join(DIR,'conf/test.yaml')
 EXCELF = os.path.join(DIR,'excel/test.xlsx')
-DBF = os.path.join(DIR,'data/pickledb/test.db')
+DBF = os.path.join(DIR,'data/test.db')
 XMLPATH = os.path.join(DIR,'xml/%s%s.xml')
 with open(YAMLF) as f:
     YAMLDATA=yaml.load(f)
@@ -176,6 +176,9 @@ def SaveStations():
 #endregion
 
 if __name__ == '__main__':
+    SaveCityCodes()
+    SaveStations()
+    exit(0)
     # train
     # pass u'广州',u'化州' will cause 400 bad request ,need pass utf8 characters
     #results = GetResponse('trainurl',"getStationAndTimeByStationName",'广州','化州')

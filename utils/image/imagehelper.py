@@ -1,4 +1,7 @@
 #encoding=utf-8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 import exifread
 import urllib2
 import json

@@ -17,6 +17,7 @@ class ApiHelper(object):
         self.sh = strhelper.StrHelper()
         self.hp =HTMLParser.HTMLParser()
         self.gh = geohelper.GeoHelper()
+        self.ipurls = ['http://ip.chinaz.com/getip.aspx']
 
     def weather(self,city):
         (wdu,jdu) = self.gh.GetWJdu(city)
@@ -134,7 +135,7 @@ class ApiHelper(object):
     def ip(self,ip=""):
         result = ""
         if len(ip) == 0:
-            for url in self.ipusls:
+            for url in self.ipurls:
                 req = requests.get(url)
                 #u"{ip:'***',address:'...'}"
                 # prompte error because not correct dict format ValueError: Expecting property name: line 1 column 1 (char 1)
@@ -293,7 +294,7 @@ class ApiHelper(object):
         return info
 
     def huilv(self,content):
-        curs = ['USD','MOP']
+        curs = ['USD','MOP','JPY']
         info = ''
         for cur in curs:
             info += (htmlhelper.GetHuiLV('CNY', cur))
