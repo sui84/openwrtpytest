@@ -4,6 +4,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 import pprint
+import traceback
+import glob
+import os
+import threading
 '''
 
     1 (1-bit pixels, black and white, stored with one pixel per byte)
@@ -260,14 +264,18 @@ def resizeImg(ifile,ofile, dst_w=0, dst_h=0, qua=85):
     BICUBIC:cubic spline interpolation in a 4x4 environment
     ANTIALIAS:best down-sizing filter
     '''
-def resizeFolderImg(idir,odir, dst_w=0, dst_h=0, qua=85):
+def resizeFolderImg(idir,dst_w=0, dst_h=0, qua=85):
     files=os.listdir(idir)
+    odir = os.path.join(idir,"out")
     for f in files:
-        ifile = os.path.join(idir,f)
-        if os.path.isfile(ifile):
-            ofile = os.path.join(odir,f)
-            resizeImg(ifile,ofile, dst_w, dst_h,qua)
-            os.remove(ifile)
+        try:
+            ifile = os.path.join(idir,f)
+            if os.path.isfile(ifile):
+                ofile = os.path.join(odir,f)
+                resizeImg(ifile,ofile, dst_w, dst_h,qua)
+                os.remove(ifile)
+        except Exception,e:
+            print 'error:',e.message,traceback.format_exc()
 
 #裁剪压缩图片
 def clipResizeImg(im, dst_w, dst_h, qua=95):
@@ -312,6 +320,25 @@ def clipResizeImg(im, dst_w, dst_h, qua=95):
     print  "new size %s %s"%(newWidth, newHeight)
     print u"剪裁后等比压缩完成"
 
+def convertImg(ifile, index , totype):
+ try:
+      fparts = os.path.splitext(os.path.basename(ifile))
+      idir = os.path.dirname(ifile)
+      im = Image.open(ifile)
+      ofile = os.path.join(idir,"out",fparts[0] + "."+ totype)
+      im.save(ofile)
+      os.remove(ifile)
+ except Exception,e:
+      print 'error:',e.message,traceback.format_exc()
+
+def convertFolderImg(idir, itype, otype):
+  index = 0
+  for ifile in glob.glob(os.path.join(idir,"*."+itype)):
+    t = threading.Thread(target=convertImg, args=(ifile, index, otype))
+    t.start()
+    t.join()
+    index += 1
+
 
 if __name__ == "__main__":
     #trans_parency(r'd:\temp\zj.jpg',r'd:\temp\zj3.png',factor=0.9)
@@ -320,7 +347,15 @@ if __name__ == "__main__":
     #merge_image('RGB',[r"D:\Temp\test0.jpg",r"D:\Temp\test1.jpg",r"D:\Temp\test2.jpg"],r"d:\temp\test.jpg")
      #image 对象
     #resizeImg(r'/mnt/sda1/temp/bq1.jpg',r'/mnt/sda1/temp/xl1.jpg', dst_w=200, dst_h=0,qua=100)
-    resizeFolderImg('/mnt/sda1/opt/img/biaoqing','/mnt/sda1/opt/img/biaoqing/out', dst_w=200, dst_h=0, qua=100)
+    if len(sys.argv)>0 and sys.argv[1]=="resizeFolderImg":
+        resizeFolderImg('/mnt/sda1/opt/img/biaoqing', dst_w=200, dst_h=0, qua=100)
+    elif len(sys.argv)>0 and sys.argv[1]=="webp2jpg":
+        convertFolderImg('/mnt/sda1/opt/img/webp2jpg',"webp","jpg")
+    elif len(sys.argv)>0 and sys.argv[1]=="jpg2webp":
+        convertFolderImg('/mnt/sda1/opt/img/jpg2webp',"jpg","webp")
+    else:
+        pass
+
     '''
     主要是实现功能， 代码没怎么整理
     '''
