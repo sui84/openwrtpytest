@@ -188,6 +188,5 @@ curl -x 192.168.1.1:8888 'http://www.baidu.com'
 curl -x 192.168.1.1:8888 'http://www.baidu.com'
 mysql
 mysql
-mysql -u root -p P@ssw0rd
 mysql -u root 
 mysql -u root -p log
