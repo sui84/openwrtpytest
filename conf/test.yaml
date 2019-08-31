@@ -21,6 +21,7 @@ translatorurl : http://fy.webxml.com.cn/webservices/EnglishChinese.asmx
 mobileurl : http://ws.webxml.com.cn/WebServices/MobileCodeWS.asmx
 traditionurl : http://ws.webxml.com.cn/WebServices/TraditionalSimplifiedWebService.asmx
 openwrt: http://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/packages/base
+ddwrt: http://pkg.entware.net/binaries/armv7/
 raspberry : http://archive.raspberrypi.org/debian/pool/main/r/raspi-config/
 githubjson: https://api.github.com/repositories/1362490/git/commits/a050faf084662f3a352dd1a941f2c7c9f886d4ad
 huodong : http://www.zhuhaihuwai.com/plugin.php?id=zzzai_ecal&month=%s

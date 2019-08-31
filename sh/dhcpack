@@ -1,0 +1,4 @@
+#!/bin/sh
+logread >> /mnt/sda1/temp/logread.txt
+date >> /mnt/sda1/temp/DHCPACK.txt
+logread | grep 'DHCPACK(br-lan)' | awk  '{print $9, $10, $11}' | sort -u >> /mnt/sda1/temp/DHCPACK.txt

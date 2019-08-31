@@ -1,8 +1,8 @@
 #!/mnt/sda1/opkg/usr/bin/python
 import functools
 import logging
+import setting
 
-    
 def exception(logger):
     """
     A decorator that wraps the passed in function and logs 
@@ -29,7 +29,7 @@ def exception(logger):
     return decorator
     
     
-def create_logger(logpath='/mnt/sda1/temp/log'):
+def create_logger(logpath=setting.LOGPATH):
     """
     Creates a logging object and returns it
     """
@@ -47,7 +47,7 @@ def create_logger(logpath='/mnt/sda1/temp/log'):
     logger.addHandler(fh)
     return logger
 
-logger = create_logger('/mnt/sda1/temp/log')
+logger = create_logger(setting.LOGPATH)
 @exception(logger)
 def zero_divide(i,j):
     i/j
